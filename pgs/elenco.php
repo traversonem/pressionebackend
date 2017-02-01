@@ -3,7 +3,7 @@
 	$record=(empty($_REQUEST['id'])) ?  R::dispense($table) : R::load($table, intval($_REQUEST['id']));	
 	try {
 		if ($record && !empty($_REQUEST['act']) && $_REQUEST['act']=='del') R::trash($record);
-		if ($_POST['datamisurazione']){
+		if (!empty($_POST['datamisurazione'])){
 			foreach ($_POST as $k=>$v){
 				$record[$k]=$_POST[$k];
 			}
@@ -14,7 +14,7 @@
 		<h4 class="msg label error">
 			<?=$e->getMessage()?>
 		</h4>
-		<?
+		<?php
 	}	
 	$pa=R::find($table);
 ?>
@@ -48,7 +48,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<? foreach ($pa as $i) : ?>
+	<?php foreach ($pa as $i) : ?>
 		<tr>
 			<td>
 				<?=$i->datamisurazione?>
@@ -63,6 +63,6 @@
 				<a href="?p=elenco&act=del&id=<?=$i->id?>" title="elimina questa rilevazione">x</a>
 			</td>			
 		</tr>
-	<? endforeach; ?>
+	<?php endforeach; ?>
 	</tbody>
 </table>

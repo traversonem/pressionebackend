@@ -14,6 +14,6 @@
 		<title>Pressione Arteriosa</title>
 	</head>
 	<body>
-		<? if (file_exists($pg)) include_once($pg); ?>
+		<?php if (file_exists($pg)) include_once($pg); ?>
 	</body>
 </html>
